@@ -1,4 +1,3 @@
-const { authenticate } = require("@google-cloud/local-auth");
 const { google } = require("googleapis");
 const sheets = google.sheets("v4");
 const path = require("path");
