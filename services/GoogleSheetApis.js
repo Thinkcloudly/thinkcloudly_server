@@ -10,8 +10,9 @@ async function fetchGoogleSheetData(spreadsheetId, range) {
       range,
       auth,
     };
+    console.info("Fetching Data from Google Sheet");
     const sheetResponse = await sheets.spreadsheets.values.get(obj);
-
+    console.info("Successfully fetched dat from google sheet");
     return sheetResponse.data;
   } catch (e) {
     const error = e.message;
@@ -21,6 +22,7 @@ async function fetchGoogleSheetData(spreadsheetId, range) {
 }
 
 async function authorizeConnection() {
+  console.info("Authorizing into Google sheet");
   const SCOPES = [process.env.GOOGLE_SCOPE1];
 
   const GOOGLE_SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
@@ -33,6 +35,7 @@ async function authorizeConnection() {
   );
 
   await jwtClient.authorize();
+  console.info("Successfully connected to Google Sheet");
   return jwtClient;
 }
 
